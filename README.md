@@ -1,13 +1,4 @@
-# RetailIQ
-
-Customer intelligence console for retail brands — RFM segmentation, AI-drafted campaigns, and loyalty economics with the evidence to back every number.
-
-![Next.js](https://img.shields.io/badge/Next.js-16.2-000000?logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/React-19.2-087EA4?logo=react&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-06B6D4?logo=tailwindcss&logoColor=white)
-![Groq](https://img.shields.io/badge/Groq-llama--3.3--70b-F55036)
-![License](https://img.shields.io/badge/License-MIT-green)
+<div align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:111827,50:1E3A8A,100:2563EB&height=240&section=header&text=RetailIQ&fontSize=80&fontColor=ffffff&animation=fadeIn&fontAlignY=34&desc=Customer%20Intelligence%20Console%20for%20Modern%20Retail%20Brands&descAlignY=56&descSize=18&descColor=D6E4FF" width="100%"/> # RetailIQ ### Customer Intelligence Console for Retail Brands Transform customer transactions into actionable retention insights with RFM segmentation, AI-generated campaigns, and loyalty economics. <br/> [![Next.js](https://img.shields.io/badge/Next.js-16.2-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)]() [![React](https://img.shields.io/badge/React-19.2-087EA4?style=for-the-badge&logo=react&logoColor=white)]() [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)]() [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)]() [![Groq](https://img.shields.io/badge/Groq-llama--3.3--70b-F55036?style=for-the-badge)]() [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)]() <br/> ![App Status](https://img.shields.io/badge/Status-Production_Ready-success?style=flat-square) ![Architecture](https://img.shields.io/badge/Architecture-App_Router-blue?style=flat-square) ![AI Powered](https://img.shields.io/badge/AI-Powered-orange?style=flat-square) ![Demo Data](https://img.shields.io/badge/Demo_Data-200_Customers-lightgrey?style=flat-square) </div>
 
 ---
 
