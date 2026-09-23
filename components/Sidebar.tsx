@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutGrid, Users, PenLine, Medal } from "lucide-react";
+import { LayoutGrid, Users, PenLine, Medal, Network } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { href: "/segments", label: "Segments", icon: Users },
   { href: "/copilot", label: "Campaigns", icon: PenLine },
   { href: "/loyalty", label: "Loyalty", icon: Medal },
+  { href: "/architecture", label: "System map", icon: Network },
 ] as const;
 
 // The mark: 2×2 grid with one square offset upward-right — the signal in the noise.

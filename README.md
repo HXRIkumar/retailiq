@@ -9,7 +9,11 @@
 
 ### Customer Intelligence Console for Retail Brands
 
-Transform customer transactions into actionable retention insights through RFM segmentation, AI-powered campaign generation, and loyalty analytics.
+> **Engineering walkthrough:** this version adds an in-app System Map and a concise
+> [`docs/INTERVIEW_GUIDE.md`](docs/INTERVIEW_GUIDE.md) for understanding the frontend,
+> backend boundary, RFM pipeline, and failure handling.
+
+Explore retention decisions through deterministic RFM demo profiles, AI-powered campaign generation, and loyalty analytics.
 
 <p align="center">
 
@@ -45,7 +49,7 @@ Transform customer transactions into actionable retention insights through RFM s
 
 RetailIQ is a customer intelligence console for retention and CRM teams at growing retail brands. It answers the questions that precede every retention decision: which customers are drifting, what they are worth, and what to send them.
 
-Rather than a general-purpose BI tool, each surface answers one standing question. Customers are segmented with RFM (Recency, Frequency, Monetary) quintile scoring, campaign drafts are generated against live segment statistics by Groq's `llama-3.3-70b-versatile`, and loyalty analytics surface the numbers a finance team asks about — including outstanding points liability.
+Rather than a general-purpose BI tool, each surface answers one standing question. Demo customers are generated from predefined RFM (Recency, Frequency, Monetary) segment profiles, campaign drafts are generated against the resulting segment statistics by Groq's `llama-3.3-70b-versatile`, and loyalty analytics surface the numbers a finance team asks about — including outstanding points liability.
 
 Every computed figure carries a provenance line stating its source, basis, and timestamp. Demo data is disclosed structurally, in the pattern of Stripe's test mode.
 
@@ -65,7 +69,7 @@ The interface implements the **Ledger** design language: warm-stone neutrals, in
 
 - Segment Ledger: one row per cohort with population, share-of-base bars on a common scale, value share in rupees and percent, average spend, and average recency
 - Hover-revealed "Draft campaign" action carrying full segment context into the composer
-- RFM methodology disclosure documenting the quintile scoring and segment assignment rules
+- RFM methodology disclosure documenting the deterministic profile ranges and direct segment assignment
 - Full 200-customer table with monospaced RFM scores and per-dimension hover explanations
 
 ### Campaigns
@@ -92,7 +96,7 @@ The interface implements the **Ledger** design language: warm-stone neutrals, in
 ### Analytics
 
 - 200 deterministic seeded customers (mulberry32 PRNG) — identical data across server and client renders, zero hydration drift
-- RFM quintile scoring with composite segment assignment
+- Deterministic RFM profile seeding with explicit segment labels and composite score display
 - Consistent numeric conventions: compact Indian notation in summaries and axes, full en-IN grouping in tables
 - Lighthouse (production build): Performance 95–99, Accessibility 100, Best Practices 100, SEO 100 across all four pages
 
@@ -108,7 +112,7 @@ The interface implements the **Ledger** design language: warm-stone neutrals, in
 
 ## Architecture
 
-- **Next.js 16 (App Router)** — server components render all data surfaces; client components are limited to interactive islands (composer, lookup, charts). Turbopack builds.
+- **Next.js 16 (App Router)** — server components render all data surfaces; client components are limited to interactive islands (composer, lookup, charts). Production builds use Webpack for reliable restricted-environment builds.
 - **TypeScript (strict)** — a single `types/index.ts` is the source of truth for segments, tiers, channels, and campaign shapes; enums flow into both UI and API validation.
 - **Tailwind CSS 4** — design tokens defined in CSS (`globals.css`), no config file; the Ledger palette maps onto warm-stone neutrals.
 - **Recharts** — used only where a charting library earns its weight (the revenue line); composition bars are pure CSS and server-rendered.
@@ -148,7 +152,7 @@ flowchart LR
 
 | Layer | Technology | Version |
 |---|---|---|
-| Framework | Next.js (App Router, Turbopack) | 16.2.7 |
+| Framework | Next.js (App Router, Webpack build) | 16.3.6 |
 | UI library | React | 19.2.4 |
 | Language | TypeScript (strict) | 5.x |
 | Styling | Tailwind CSS | 4.x |
@@ -156,7 +160,12 @@ flowchart LR
 | Icons | Lucide React | 1.17.x |
 | AI | Groq SDK (`llama-3.3-70b-versatile`) | 1.2.x |
 | Validation | Zod | 4.x |
-| Fonts | Geist Sans, Geist Mono | via `next/font` |
+| Fonts | System UI and system mono stacks | Local, zero external build requests |
+
+The learning edition pins Next.js and its ESLint config to patched version 16.3.6,
+uses local system font stacks so builds make no Google Fonts request, and uses the
+Webpack production builder because Turbopack's internal worker-port binding is not
+available in some restricted build environments.
 
 ## Getting Started
 

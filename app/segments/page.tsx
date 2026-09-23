@@ -31,7 +31,7 @@ export default function SegmentsPage() {
         <h1 className="text-xl font-semibold tracking-tight text-stone-900">
           Segments
         </h1>
-        <Provenance className="hidden sm:block">RFM quintiles · 200 customers · as of 1 Jun 2026</Provenance>
+        <Provenance className="hidden sm:block">Seeded RFM profiles · 200 customers · as of 1 Jun 2026</Provenance>
       </div>
 
       {/* The Segment Ledger — one instrument, aligned columns, comparison-first */}
@@ -143,26 +143,26 @@ export default function SegmentsPage() {
           <span className="mr-2 inline-block transition-transform group-open:rotate-90">
             ›
           </span>
-          How RFM scores are computed
+          How demo RFM scores are generated
         </summary>
         <div className="space-y-2 border-t border-stone-100 px-5 py-4 text-[13px] leading-relaxed text-stone-600">
           <p>
-            Each customer receives three quintile scores from 1 to 5:{" "}
-            <span className="font-mono text-xs">R</span> (days since last
-            purchase — lower is better),{" "}
-            <span className="font-mono text-xs">F</span> (purchase count), and{" "}
-            <span className="font-mono text-xs">M</span> (total spend). Quintile
-            boundaries are recomputed against the full customer base on every
-            sync.
+            The demo first selects a predefined segment profile. That profile
+            supplies allowed 1-to-5 ranges for {" "}
+            <span className="font-mono text-xs">R</span> (recency),{" "}
+            <span className="font-mono text-xs">F</span> (frequency), and{" "}
+            <span className="font-mono text-xs">M</span> (monetary value). A
+            seeded generator chooses values inside those ranges, so every run
+            produces the same dataset.
           </p>
           <p>
-            Segments are assigned from score patterns: Champions score 4–5
-            across all three dimensions; At Risk combines high historical value
-            (F, M ≥ 3) with poor recency (R ≤ 2); Hibernating scores low on
-            every dimension. A customer belongs to exactly one segment.
+            The segment label comes directly from the selected profile; this demo
+            does not derive live quintile boundaries from transaction records.
+            The profile ranges are chosen so the displayed RFM scores remain
+            consistent with each segment&apos;s meaning.
           </p>
           <Provenance className="pt-1">
-            Quintile method · recomputed on sync · last run 1 Jun 2026
+            Deterministic profile method · demo data · generated 1 Jun 2026
           </Provenance>
         </div>
       </details>

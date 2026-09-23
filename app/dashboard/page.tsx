@@ -112,7 +112,7 @@ export default function OverviewPage() {
           </h2>
           <SegmentCompositionBar data={SEGMENT_STATS} />
           <Provenance className="mt-3">
-            RFM quintile assignment · 200 customers
+            Seeded RFM profile assignment · 200 demo customers
           </Provenance>
         </div>
       </div>
